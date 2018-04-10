@@ -1,0 +1,20 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Isaac Abrahamson",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.30",
+    "pug": "^0.1.0",
+    "serve-favicon": "^2.4.3",
+    "shortid": "^2.2.8",
+    "validator": "^8.0.0"
+  }
+}

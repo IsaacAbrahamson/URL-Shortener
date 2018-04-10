@@ -1,0 +1,50 @@
+title URL Shortener
+meta(name='description' content='A simple URL shortener microservice made for freeCodeCamp')
+meta(charset='utf-8')
+meta(name='viewport' content='width=device-width, initial-scale=1')
+link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet")
+link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+
+link(href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css' rel='stylesheet')
+link(href="/style.css" rel="stylesheet")
+
+header.flex
+  a.logo(href='https://isaacabrahamson.com') by Isaac Abrahamson
+  a.urls(href='/') home
+  a.api(href='https://www.freecodecamp.org/challenges/url-shortener-microservice') about
+
+
+.container
+  h1 API Instuctions
+  br
+  br
+  p You can use this simple URL shortener microservice for your project by fetching this api. All data sent will be in JSON format.
+  h3 Creating a URL
+  br
+  p <code>/api/new/[yourURL]</code>
+  br
+  p Ex: 
+    a(href='https://url.glitch.me/api/new/isaacabrahamson.com' target='_blank') https://url.glitch.me/api/new/isaacabrahamson.com
+  h3 Using the URL
+  br
+  p Add the short url on to the end of this api.
+  br
+  p Ex: 
+    a(href='https://url.glitch.me/ByWa0WCUb' target='_blank') https://url.glitch.me/ByWa0WCUb
+  h3 Viewing Shortened URL's
+  br
+  p You can view the list of shortened URL's with the /all api endpoint.
+  br
+  p Ex: 
+    a(href='https://url.glitch.me/api/all' target='_blank') https://url.glitch.me/api/all
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+
+// Vex JS
+script(src='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/js/vex.combined.min.js')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex.min.css')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex-theme-default.min.css')
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js")
+
+script(src='/index.js')
