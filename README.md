@@ -1,37 +1,3 @@
-# URL Shortener
-A simple URL shortener microservice made for [Free Code Camp](https://freecodecamp.com/) back-end project.
+## NinjaURL
 
-View live at: nurl.us
-
-## Example Usage:
-You can create a shortened url with the `/new` endpoint:
-
-nurl.us/api/new/exampleWebsite.com
-
-nurl.us/api/new/http:/exampleWebsite.com/
-
-nurl.us/api/new/https://exampleWebsite.com/exampleRoute
-
-
-#### Example Output:
-```json
-{
-  "originalUrl": "exampleWebsite.com",
-  "shortUrl": "nurl.us/HJimWZiBg"
-}
-```
-
-```json
-{
-  "originalUrl": "exampleWebsite.com/exampleRoute",
-  "shortUrl": "nurl.us/BJEHW-sBg"
-}
-```
-
-To use, simply visit the shortened URL.
-
-
-
-## View URL database
-If for some reason you want to see the entire list of shortened URL's, you can do so with the following endpoint:
-nurl.us/api/showurls
+I started this project as a RESTful API microservice, but then added some more functionality to have a complete fullstack web app. I built the backend microservice with Node, Express and Mongo, and then I built a simple frontend to call the API. While you probably won't use this for any real purpose, I learned a lot about how the backend works with this simple app.
