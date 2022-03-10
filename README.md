@@ -1,3 +1,37 @@
-## NinjaURL
+# URL Shortener
+A simple URL shortener microservice made for [Free Code Camp](https://freecodecamp.com/) back-end project.
 
-I started this project as a RESTful API microservice, but then added some more functionality to have a complete fullstack web app. I built the backend microservice with Node, Express and Mongo, and then I built a simple frontend to call the API. While you probably won't use this for any real purpose, I learned a lot about how the backend works with this simple app.
+View live at: https://url.gomix.me
+
+## Example Usage:
+You can create a shortened url with the `/new` endpoint:
+
+https://url.glitch.me/api/new/exampleWebsite.com
+
+https://url.glitch.me/api/new/http:/exampleWebsite.com/
+
+https://url.glitch.me/api/new/https://exampleWebsite.com/exampleRoute
+
+
+#### Example Output:
+```json
+{
+  "originalUrl": "exampleWebsite.com",
+  "shortUrl": "https://url.gomix.me/HJimWZiBg"
+}
+```
+
+```json
+{
+  "originalUrl": "exampleWebsite.com/exampleRoute",
+  "shortUrl": "https://url.gomix.me/BJEHW-sBg"
+}
+```
+
+To use, simply visit the shortened URL.
+
+
+
+## View URL database
+If for some reason you want to see the entire list of shortened URL's, you can do so with the following endpoint:
+https://url.glitch.me/api/showurls
