@@ -6,21 +6,17 @@ link(href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesh
 link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
 
 link(href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css' rel='stylesheet')
-
-link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex.min.css')
-link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex-theme-default.min.css')
-
 link(href="/style.css" rel="stylesheet")
 
 header.flex
   a.logo(href='https://isaacabrahamson.com') by Isaac Abrahamson
-  a.urls(href='https://www.freecodecamp.org/challenges/url-shortener-microservice') about
+  a.urls(href='https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/url-shortener-microservice') about
   a.api(href='/api') api
 
 .flex.flex-container
-  h1 <span>ninja</span>URL
+  h1 URL Shortener
   .search.flex
-    input#urlBox(type='text' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter URL to shorten")
+    input#urlBox(type='text' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false")
     button.search-btn(data-clipboard-target='#urlBox')
       i.material-icons arrow_forward
       
@@ -28,6 +24,8 @@ script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
 
 // Vex JS
 script(src='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/js/vex.combined.min.js')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex.min.css')
+link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/vex-js/4.0.0/css/vex-theme-default.min.css')
 
 script(src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js")
 

@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
-
 html, body {
-  background: url(wood.png);
+  background: #03A9F4;
   font-family: 'Source Code Pro', monospace;
   color: white;
   width: 100%;
@@ -21,15 +19,8 @@ html, body {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 35px;
   text-align: center;
-  font-family: 'Do Hyeon', sans-serif;
-}
-
-h1 span {
-  font-size: 24px;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.8);
 }
 
 .search {  
@@ -43,11 +34,6 @@ input {
   padding: 7px;
   color: rgba(255,255,255,0.8);
   font-size: 16px;
-}
-
-input:focus {
-  outline: none !important;
-  box-shadow: 0 0 10px #8a0000;
 }
 
 .search-btn {
@@ -76,17 +62,11 @@ header a, header a:hover, header a:active, header a:visited {
   color: white;
   text-decoration: none;
   font-size: 25px;
-  font-family: 'Do Hyeon', sans-serif;
 }
 
 header .logo {
   margin-right: auto;
-}
-
-@media only screen and (max-width: 500px) {
-  header .logo {
-    display: none;
-  }
+  font-family: monospace;
 }
 
 header .urls {
@@ -97,25 +77,17 @@ header .urls {
   color: black;
 }
 
-.vex.vex-theme-default .vex-dialog-button.vex-dialog-button-primary {
-  background: black;
-}
-
 .container {
+  background: rgba(0,0,0,0.05);
   width: 80%;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20vh;
   padding: 2% 10%;
-  padding-top: 20vh;
 }
 
 h3 {
   margin-top: 40px;
   font-size: 25px;
-}
-
-p a, p a:link, p a:visited, p a:hover, p a:active {
-  color: white;
-  word-wrap: break-word;
 }

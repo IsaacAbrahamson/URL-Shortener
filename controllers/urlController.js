@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient
-const dbUrl = process.env.MLAB_URI
+const dbUrl = process.env.ATLAS_URI
 const shortid = require('shortid')
 const validator = require('validator')
 
