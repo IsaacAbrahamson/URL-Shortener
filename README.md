@@ -35,3 +35,9 @@ To use, simply visit the shortened URL.
 ## View URL database
 If for some reason you want to see the entire list of shortened URL's, you can do so with the following endpoint:
 https://url.glitch.com/api/showurls
+
+
+
+## Install local
+
+Create .env file with `ATLAS_URI=mongodb atlas uri here`
