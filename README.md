@@ -38,6 +38,14 @@ https://url.glitch.com/api/showurls
 
 
 
-## Install local
+## Installation
 
-Create .env file with `ATLAS_URI=mongodb atlas uri here`
+Install all dependencies
+```
+npm install
+```
+
+Create .env file with MongoDB Atlas connection
+```
+ATLAS_URI=mongodb+srv://urluser:urlpassword@123server.mongodb.net/?retryWrites=true&w=majority
+```
