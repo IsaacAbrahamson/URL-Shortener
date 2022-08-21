@@ -1,9 +1,24 @@
 # URL Shortener
-A simple URL shortener microservice made for [Free Code Camp](https://freecodecamp.com/) back-end project.
+A url shortener REST API built using express.js and MongoDB.
 
-View live at: https://url.glitch.com
+https://url.iabrahamson.com
 
-## Example Usage:
+## Overview
+
+I originally made this as a simple url shortener API for a back-end project in 2018. After completing the API, I built a simple front-end to interact with it.
+
+This project was initially built on [glitch.com](https://glitch.com) and used MongoDB Atlas as a database. In 2022, I moved this project to my own webserver and updated it to use a local MongoDB database, Mongoose ODM, and modern ES6 JavaScript.
+
+## Features
+- Express.js and MongoDB backend
+- MVC architecture
+- REST api
+- Modern javascript features such as ES modules, fetch API, and top-level await
+- Simple frontend app to interact with REST api
+
+## Shortening url with the web app
+
+## Shortening url with the REST api
 You can create a shortened url with the `/new` endpoint:
 
 https://url.glitch.com/api/new/exampleWebsite.com

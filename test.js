@@ -3,5 +3,5 @@ import Url from './models/Url.js'
 
 mongoose.connect('mongodb://localhost/urls')
 
-const url = new Url({ url: 'iabrahamson.com' })
-await url.save()
+const url = await Url.create({ url: 'iabrahamson.com' })
+console.log(url)
