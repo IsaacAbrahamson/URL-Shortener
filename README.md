@@ -40,12 +40,14 @@ https://url.glitch.com/api/showurls
 
 ## Installation
 
-Install all dependencies
+You will need Node.js and MongoDB installed locally to run this project.
+
+Install all dependencies:
 ```
 npm install
 ```
 
-Create .env file with MongoDB Atlas connection
+Start:
 ```
-ATLAS_URI=mongodb+srv://urluser:urlpassword@123server.mongodb.net/?retryWrites=true&w=majority
+npm start
 ```
