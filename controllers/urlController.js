@@ -1,83 +1,55 @@
-const MongoClient = require('mongodb').MongoClient
-const dbUrl = process.env.ATLAS_URI
-const shortid = require('shortid')
-const validator = require('validator')
+import nanoid from 'nanoid'
+import validator from 'validator'
+import mongoose from 'mongoose'
+import Url from '../models/Url.js'
 
-function showUrls(db, callback) {
-  db.collection('urlCollection').find({}).limit(10).toArray((err, results) => callback(results))
+// Connect to database
+const db = 'mongodb://localhost/urls'
+try {
+  await mongoose.connect(db)
+  console.log(`Connected to database at ${db}`)
+} catch (e) {
+  console.error(e)
 }
 
-function latest(db, callback) {
-  db.collection('latestUrls').find().sort({ $natural: -1 }).limit(5).toArray((err, results) => callback(results))
+async function showUrls(req, res) {
+  const urls = await Url.find().sort({ $natural: -1 }).limit(5)
+  res.json(urls)
 }
 
-function newUrl(db, url, callback) {
-  var id = shortid.generate()
+async function newUrl(req, res) {
+  let url = req.params[0]
+  const _id = nanoid(5)
 
-  if (validator.isURL(url)) {
-    var validatedUrl = url.replace(/^.*:\/\//i, '') // remove protocol from url if it has one
-    validatedUrl = validatedUrl.replace(/\/+$/, "") // remove trailing slash
-    db.collection('urlCollection').find({ "url": validatedUrl }).toArray((err, results) => callback(null, results, validatedUrl, id))
-  } else {
-    callback(true)
+  // Check if url is a valid url
+  if (!validator.isURL(url)) {
+    res.json({ 'error': `'${url}' is not a valid URL.` })
+    return
+  }
+
+  // Remove everything except domain in url
+  url = url.replace(/^.*:\/\//i, '').replace(/\/+$/, '')
+
+  // Only create new short url if one doesn't exist for that domain
+  const urlsCount = await Url.countDocuments({ url })
+  if (urlsCount.length < 1) await new Url({ _id, url })
+
+  res.json({ 'originalUrl': url, 'shortUrl': '/' + _id })
+}
+
+async function redirect(req, res) {
+  const _id = req.params._id
+
+  // Do not redirect favicon request from browser
+  if (_id === 'favicon.ico') return
+
+  // Redirect or show error if invalid url
+  try {
+    const urls = await Url.find({ _id })
+    res.redirect('http://' + urls[0].url)
+  } catch {
+    res.json({ 'error': `'${_id}' is not a valid short URL.` })
   }
 }
 
-function redirect(db, id, callback) {
-  db.collection('urlCollection').find({ "_id": id }).toArray((err, results) => callback(results))
-}
-
-module.exports = {
-  showUrls(req, res) {
-    MongoClient.connect(dbUrl, function (err, db) {
-      showUrls(db, function (results) {
-        db.close()
-        res.json(results)
-      })
-    })
-  },
-  newUrl(req, res, url) {
-    MongoClient.connect(dbUrl, function (err, db) {
-      newUrl(db, url, function (err, results, validatedUrl, id) {
-        if (err) {
-          db.close()
-          res.json({ "error": `'${url}' is not a valid URL.` })
-          return
-        }
-
-        // add url to latest
-        db.collection('latestUrls').insertOne({ "_id": id, "url": validatedUrl })
-          .then(function () {
-            db.close()
-          })
-
-        if (results.length < 1) {
-          db.collection('urlCollection').insertOne({ "_id": id, "url": validatedUrl }).then(function () {
-            db.close()
-            res.json({ "originalUrl": validatedUrl, "shortUrl": `/${id}` })
-          })
-        } else {
-          id = results[0]._id
-          db.close()
-          res.json({ "originalUrl": validatedUrl, "shortUrl": `/${id}` })
-        }
-      })
-    })
-  },
-  redirect(req, res, id) {
-    MongoClient.connect(dbUrl, function (err, db) {
-      redirect(db, id, function (results) {
-        db.close()
-        res.redirect('http://' + results[0].url)
-      })
-    })
-  },
-  latest(req, res) {
-    MongoClient.connect(dbUrl, function (err, db) {
-      latest(db, function (results) {
-        db.close()
-        res.json(results)
-      })
-    })
-  }
-}
+export { showUrls, newUrl, redirect }

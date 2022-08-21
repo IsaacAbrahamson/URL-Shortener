@@ -1,13 +1,14 @@
 import express from 'express'
-import index from './routes/index.js'
 import api from './routes/api.js'
+import { redirect } from './controllers/urlController.js'
 
 // Configure express
 const app = express()
 app.set('view engine', 'pug')
 app.use(express.static('public'))
-app.get('/', index)
-app.get('/api', api)
+app.use('/api/', api)
+app.get('/', (req, res) => res.render('index'))
+app.get('/:_id', redirect)
 
 // Start server
 const PORT = process.env.PORT || 3000
