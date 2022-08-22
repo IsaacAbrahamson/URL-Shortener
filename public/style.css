@@ -1,5 +1,6 @@
-html, body {
-  background: #03A9F4;
+html,
+body {
+  background: #0B0B0B;
   font-family: 'Source Code Pro', monospace;
   color: white;
   width: 100%;
@@ -10,7 +11,7 @@ html, body {
   display: flex;
 }
 
-.flex-container {  
+.flex-container {
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -23,16 +24,16 @@ h1 {
   text-align: center;
 }
 
-.search {  
+.search {
   margin-top: 30px;
   align-items: center;
 }
 
 input {
   background: none;
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 2px solid rgba(255, 255, 255, 0.2);
   padding: 7px;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 16px;
 }
 
@@ -45,7 +46,7 @@ input {
 }
 
 i {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   font-size: 12px;
   line-height: 30px !important;
@@ -56,17 +57,16 @@ header {
   top: 50px;
   width: 85%;
   padding-left: 50px;
+  justify-content: end;
 }
 
-header a, header a:hover, header a:active, header a:visited {
+header a,
+header a:hover,
+header a:active,
+header a:visited {
   color: white;
   text-decoration: none;
   font-size: 25px;
-}
-
-header .logo {
-  margin-right: auto;
-  font-family: monospace;
 }
 
 header .urls {
@@ -78,7 +78,7 @@ header .urls {
 }
 
 .container {
-  background: rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.05);
   width: 80%;
   max-width: 900px;
   margin-left: auto;

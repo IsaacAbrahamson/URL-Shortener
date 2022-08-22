@@ -1,22 +1,16 @@
-/*
-globals
-  vex
-  Clipboard 
-*/
-
 vex.defaultOptions.className = 'vex-theme-default'
 
 new Clipboard('.search-btn')
 
 $(document).ready(() => {
-  $('button').click( async () => {
-    const longURL = $('#urlBox').val() 
-    
+  $('button').click(async () => {
+    const longURL = $('#urlBox').val()
+
     let response = await fetch(`/api/new/${longURL}`)
-    let data = await response.json()    
-    
+    let data = await response.json()
+
     console.log(data)
-    
+
     vex.dialog.open({
       message: `${data.originalUrl} has been shortened!`,
       input: [
@@ -30,6 +24,6 @@ $(document).ready(() => {
         if (redirrect) window.location.href = data.shortUrl
       }
     })
-    
+
   })
 })
