@@ -8,7 +8,7 @@ app.set('view engine', 'pug')
 app.use(express.static('public'))
 app.use('/api/', api)
 app.get('/', (req, res) => res.render('index'))
-app.get('/:_id', redirect)
+app.get('/:shortid', redirect)
 
 // Start server
 const PORT = process.env.PORT || 3000

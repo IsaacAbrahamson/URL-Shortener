@@ -1,7 +1,8 @@
-import nanoid from 'nanoid'
+import { customAlphabet } from 'nanoid'
 import validator from 'validator'
 import mongoose from 'mongoose'
 import Url from '../models/Url.js'
+const nanoid = customAlphabet('1234567890abcdef', 5)
 
 // Connect to database
 const db = 'mongodb://localhost/urls'
@@ -19,7 +20,7 @@ async function showUrls(req, res) {
 
 async function newUrl(req, res) {
   let url = req.params[0]
-  const _id = nanoid(5)
+  let shortid = nanoid()
 
   // Check if url is a valid url
   if (!validator.isURL(url)) {
@@ -31,24 +32,28 @@ async function newUrl(req, res) {
   url = url.replace(/^.*:\/\//i, '').replace(/\/+$/, '')
 
   // Only create new short url if one doesn't exist for that domain
-  const urlsCount = await Url.countDocuments({ url })
-  if (urlsCount.length < 1) await new Url({ _id, url })
+  const existing = await Url.findOne({ url })
+  if (existing) {
+    shortid = existing.shortid
+  } else {
+    await Url.create({ shortid, url })
+  }
 
-  res.json({ 'originalUrl': url, 'shortUrl': '/' + _id })
+  res.json({ 'originalUrl': url, 'shortUrl': '/' + shortid })
 }
 
 async function redirect(req, res) {
-  const _id = req.params._id
+  const shortid = req.params.shortid
 
   // Do not redirect favicon request from browser
-  if (_id === 'favicon.ico') return
+  if (shortid === 'favicon.ico') return
 
   // Redirect or show error if invalid url
   try {
-    const urls = await Url.find({ _id })
+    const urls = await Url.find({ shortid })
     res.redirect('http://' + urls[0].url)
   } catch {
-    res.json({ 'error': `'${_id}' is not a valid short URL.` })
+    res.json({ 'error': `'${shortid}' is not a valid short URL.` })
   }
 }
 

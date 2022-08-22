@@ -1,7 +1,9 @@
 import mongoose from "mongoose"
 
 const urlSchema = new mongoose.Schema({
+  shortid: String,
   url: String
 })
 
-export default mongoose.model('Url', urlSchema)
+const Url = mongoose.model('Url', urlSchema)
+export default Url
