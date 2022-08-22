@@ -5,53 +5,51 @@ https://url.iabrahamson.com
 
 ## Overview
 
-I originally made this as a simple url shortener API for a back-end project in 2018. After completing the API, I built a simple front-end to interact with it.
-
-This project was initially built on [glitch.com](https://glitch.com) and used MongoDB Atlas as a database. In 2022, I moved this project to my own webserver and updated it to use a local MongoDB database, Mongoose ODM, and modern ES6 JavaScript.
+I originally made this as a simple url shortener API for a back-end project in 2018. After completing the API, I built a simple front-end to interact with it. I've made a couple edits since then to modernize some outdated libraries and code.
 
 ## Features
-- Express.js and MongoDB backend
+- Automatically redirect short URL's to an original URL
+- Express.js and MongoDB REST api
 - MVC architecture
-- REST api
+- Mongoose.js ODM
 - Modern javascript features such as ES modules, fetch API, and top-level await
 - Simple frontend app to interact with REST api
 
 ## Shortening url with the web app
 
+Enter the URL you wish to shorten:
+
+![image](https://user-images.githubusercontent.com/17521691/185829448-e5ec02da-5a92-4542-bc91-f5c4ae6c5d78.png)
+
+Copy or visit the shortened URL returned:
+
+![image](https://user-images.githubusercontent.com/17521691/185829427-2c3706e0-1969-44a4-94fc-c61e2a1d2ab4.png)
+
 ## Shortening url with the REST api
-You can create a shortened url with the `/new` endpoint:
 
-https://url.glitch.com/api/new/exampleWebsite.com
-
-https://url.glitch.com/api/new/http:/exampleWebsite.com/
-
-https://url.glitch.com/api/new/https://exampleWebsite.com/exampleRoute
-
-
+Use `/api/new/<url>` endpoint to create a new short url. Example:
+```
+https://url.iabrahamson.com/api/new/github.com
+https://url.iabrahamson.com/api/new/https://github.com/IsaacAbrahamson/URL-Shortener/
+```
 #### Example Output:
 ```json
 {
-  "originalUrl": "exampleWebsite.com",
-  "shortUrl": "https://url.glitch.com/HJimWZiBg"
+  "originalUrl": "github.com",
+  "shortUrl": "/57e2a"
 }
 ```
 
 ```json
 {
-  "originalUrl": "exampleWebsite.com/exampleRoute",
-  "shortUrl": "https://url.glitch.com/BJEHW-sBg"
+  "originalUrl": "github.com/IsaacAbrahamson/URL-Shortener",
+  "shortUrl": "/70016"
 }
 ```
 
-To use, simply visit the shortened URL.
+Use `/api/all` to view entire `urls` collection.
 
-
-
-## View URL database
-If for some reason you want to see the entire list of shortened URL's, you can do so with the following endpoint:
-https://url.glitch.com/api/showurls
-
-
+Visit `url.iabrahamson.com/<shorturl>` to be redirected to the original website.
 
 ## Installation
 
