@@ -8,7 +8,7 @@ const nanoid = customAlphabet('1234567890abcdef', 5)
 // Connect to database
 try {
   await mongoose.connect(process.env.DB_URL)
-  console.log(`Connected to database at ${db}`)
+  console.log(`Connected to database at ${process.env.DB_URL}`)
 } catch (e) {
   console.error(e)
 }
