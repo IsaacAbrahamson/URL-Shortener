@@ -1,5 +1,5 @@
 # URL Shortener
-A url shortener REST API built using express.js and MongoDB.
+REST API using MongoDB and Express
 
 https://url.iabrahamson.com
 
