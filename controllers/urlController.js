@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { customAlphabet } from 'nanoid'
 import validator from 'validator'
 import mongoose from 'mongoose'
@@ -5,9 +6,8 @@ import Url from '../models/Url.js'
 const nanoid = customAlphabet('1234567890abcdef', 5)
 
 // Connect to database
-const db = 'mongodb://localhost/urls'
 try {
-  await mongoose.connect(db)
+  await mongoose.connect(process.env.DB_URL)
   console.log(`Connected to database at ${db}`)
 } catch (e) {
   console.error(e)

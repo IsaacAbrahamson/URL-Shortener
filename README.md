@@ -62,6 +62,15 @@ Install all dependencies:
 npm install
 ```
 
+Add a `.env` file with the location to a MongoDB database:
+```bash
+# Local MongoDB Database
+DB_URL="mongodb://localhost/urls"
+
+# MongoDB Atlas Database
+DB_URL="mongodb+srv://urluser:urlpassword@cluster123.mongodb.net/?retryWrites=true&w=majority"
+```
+
 Start:
 ```
 npm start

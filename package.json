@@ -10,7 +10,7 @@
   "author": "Isaac Abrahamson",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.1",
     "express": "^4.15.3",
     "mongoose": "^6.5.2",
     "nanoid": "^4.0.0",
